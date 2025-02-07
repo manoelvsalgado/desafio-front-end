@@ -1,35 +1,47 @@
 import './index.css'
-import globeIcon from '../../assets/icons/whiteGlobe.svg'
+import blackGlobe from '../../assets/icons/blackGlobe.svg'
 
-interface CityListProps {
-  cities: string[];
-}
-
-const CityList: React.FC<CityListProps> = ({ cities }) => {
+const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
   return (
-    <ul>
-      {cities.map((city, index) => (
+    <ul className="shifts-container">
+      {shifts.map((shift, index) => (
         <li key={index}>
-          <a href="#">{city}</a>
+          <p>{shift}</p>
+          <img src={blackGlobe} alt={shift} />
+          <p>-8°C</p>
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
+
+const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
+  return (
+    <ul className="weather-info-container">
+      {weatherInfo.map((info, index) => (
+        <li key={index}>
+          <p>{info}</p>
+          <p>teste</p>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 const City: React.FC = () => {
-  const cities = ["Madri", "Fairbanks", "London", "Recife", "Vancouver", "Yakutsk"]
+  const shifts = ["Dawn", "Morning", "Afternoon", "Night"];
+  const weatherInfo = ["Wind Speed", "Sunrise", "Sunset", "Humidity"];
 
   return (
-    <div className='container'>
-      <h1>Weather</h1>
-      <h2>Select a City</h2>
-      <div>
-        <img src={globeIcon} className="logo" alt="Globe logo"/>
-      </div>
-      <CityList cities={cities} />
+    <div className="container">
+      <h1>Vancouver</h1>
+      <h2>Snow</h2>
+      <h3>-4°C</h3>
+      <img src={blackGlobe} alt="Weather condition" />
+      <Shifts shifts={shifts} />
+      <WeatherInfo weatherInfo={weatherInfo} />
     </div>
-  )
-}
+  );
+};
 
-export default City
+export default City;
