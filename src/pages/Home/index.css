@@ -1,12 +1,6 @@
-body, h1, h2, ul {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #000000, #757575); /* Fundo gradiente azul */
+  background: linear-gradient(135deg, #000000, #757575);
   color: #fff;
   display: flex;
   justify-content: center;

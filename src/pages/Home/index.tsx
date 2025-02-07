@@ -18,7 +18,7 @@ const CityList: React.FC<CityListProps> = ({ cities }) => {
 }
 
 const Home: React.FC = () => {
-  const cities = ["Madri", "Fairbanks", "London", "Recife", "Vancouver", "Yakutsk"]
+  const cities = ["Dallol", "Fairbanks", "London", "Recife", "Vancouver", "Yakutsk"]
 
   return (
     <div className='container'>
