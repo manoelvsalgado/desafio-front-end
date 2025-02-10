@@ -1,5 +1,6 @@
 import './index.css'
 import blackGlobe from '../../assets/icons/blackGlobe.svg'
+import { useNavigate } from 'react-router-dom';
 
 const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
   return (
@@ -31,9 +32,11 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
 const City: React.FC = () => {
   const shifts = ["Dawn", "Morning", "Afternoon", "Night"];
   const weatherInfo = ["Wind Speed", "Sunrise", "Sunset", "Humidity"];
+  const navigate = useNavigate();
 
   return (
     <div className="container">
+      <button onClick={() => navigate(-1)}>Go back</button>
       <h1>Vancouver</h1>
       <h2>Snow</h2>
       <h3>-4°C</h3>
