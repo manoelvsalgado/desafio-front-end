@@ -10,7 +10,7 @@ const CityList: React.FC<CityListProps> = ({ cities }) => {
     <ul>
       {cities.map((city, index) => (
         <li key={index}>
-          <a href="#">{city}</a>
+          <a href={`/city/${city}`}>{city}</a>
         </li>
       ))}
     </ul>
