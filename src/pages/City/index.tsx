@@ -1,54 +1,40 @@
 import './index.css'
-import blackGlobe from '../../assets/icons/blackGlobe.svg'
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { useWeather } from '../../context/weatherContext';
+import WeatherInfo from '../../components/weatherInfo';
+import Shifts from '../../components/shiftCard';
+import { useEffect } from 'react';
 
-const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
-  return (
-    <ul className="shifts-container">
-      {shifts.map((shift, index) => (
-        <li key={index}>
-          <p>{shift}</p>
-          <img src={blackGlobe} alt={shift} />
-          <p>-8°C</p>
-        </li>
-      ))}
-    </ul>
-  );
-};
+  const City: React.FC = () => {
+    const shifts = ["Dawn", "Morning", "Afternoon", "Night"];
+    const weatherInfo = ["Wind Speed", "Sunrise", "Sunset", "Humidity"];
+    const navigate = useNavigate();
+    const { name } = useParams();
+    const { city } = useParams<{ city: string }>();
+    const { data, getWeather } = useWeather();
+  
+    const current = data.current;
 
-const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
-  return (
-    <ul className="weather-info-container">
-      {weatherInfo.map((info, index) => (
-        <li key={index}>
-          <p>{info}</p>
-          <p>teste</p>
-        </li>
-      ))}
-    </ul>
-  );
-};
+    useEffect(() => {
+      if (city) {
+        getWeather(city);
+      }
+    }, [city]);
 
-const City: React.FC = () => {
-  const shifts = ["Dawn", "Morning", "Afternoon", "Night"];
-  const weatherInfo = ["Wind Speed", "Sunrise", "Sunset", "Humidity"];
-  const navigate = useNavigate();
-  const { name } = useParams<{ name: string }>();
-
-  return (
-    <div className="container">
-      <h1>{name}</h1>
-      <h2>Snow</h2>
-      <h3>-4°C</h3>
-      <img src={blackGlobe} alt="Weather condition" />
-      <Shifts shifts={shifts} />
-      <WeatherInfo weatherInfo={weatherInfo} />
-      <button onClick={() => navigate(-1)}>
-        <p>Go back</p>
-      </button>
-    </div>
-  );
-};
+    return (
+      <div className="container">
+        <h1>{name}</h1>
+        <h2>{current.condition.text}</h2>
+        <h3>-4°C</h3>
+        <img src={`https:${current.condition.icon}`} alt={current.condition.text} />
+        <Shifts shifts={shifts} />
+        <WeatherInfo weatherInfo={weatherInfo} />
+        <button onClick={() => navigate(-1)}>
+          <p>Go back</p>
+        </button>
+      </div>
+    );
+  };
 
 export default City;
