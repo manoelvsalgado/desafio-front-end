@@ -12,38 +12,34 @@ body {
   color: black;
   width: 50%;
   margin: auto;
-}
 
-button {
-  color: white
-}
-
-h1 {
-  font-family: Arial, sans-serif;
-  font-weight: lighter;
-  font-size: 42px;
-  color: black;
-}
-
-h2 {
-  font-family: Arial, sans-serif;
-  font-weight: lighter;
-  font-size: 24px;
-  color: black;
-}
-
-h3 {
+  h1 {
     font-family: Arial, sans-serif;
     font-weight: lighter;
-    font-size: 36px;
+    font-size: 42px;
     color: black;
-}
-
-p {
-  font-family: Arial, sans-serif;
-  font-weight: lighter;
-  font-size: 12px;
-  color: black;
+  }
+  
+  h2 {
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 24px;
+    color: black;
+  }
+  
+  h3 {
+      font-family: Arial, sans-serif;
+      font-weight: lighter;
+      font-size: 36px;
+      color: black;
+  }
+  
+  p {
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 12px;
+    color: black;
+  }
 }
 
 img {
@@ -67,15 +63,6 @@ img {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, auto);
   margin-top: 40px;
-
-  div {
-    padding: 20px;
-    text-align: center;
-    border-right: 3px solid white;
-  }
-  div:nth-child(4n) {
-    border-right: none;
-  }
 }
 
 ul {
@@ -100,4 +87,10 @@ li {
     width: 40px;
     height: 40px;
   }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

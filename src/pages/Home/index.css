@@ -10,7 +10,7 @@ body {
 
 .container {
   background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
+  padding: 80px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -19,21 +19,24 @@ body {
   backdrop-filter: blur(10px);
 }
 
-h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
+.container {
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white;
+  }
 
-h2 {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #ddd;
+  h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+  }
 }
 
 .logo {
   width: 200px;
   height: auto;
-  margin: 10px 0;
+  margin: 50px 0;
 }
 
 ul {
