@@ -1,3 +1,5 @@
+
+
 const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
     return (
       <ul className="weather-info-container">
