@@ -1,12 +1,9 @@
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
 import React from 'react'
-import { WeatherProvider } from './context/weatherContext.tsx'
+import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-      <WeatherProvider>
-        <App />
-      </WeatherProvider>
+    <App />
   </React.StrictMode>
 )
