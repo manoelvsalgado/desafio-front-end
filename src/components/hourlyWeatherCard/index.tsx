@@ -1,10 +1,11 @@
+import { Box, Text, Image, HStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const API_KEY = "0859778bf6364de7854190048250602";
 
 interface WeatherData {
-  shift: string; // Substituí "time" por "shift"
+  shift: string;
   temp: number | null;
   icon: string;
 }
@@ -37,19 +38,18 @@ const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
       );
   }, [name, shifts]);
 
-  console.log(shifts)
-
   return (
-    <ul className="shifts-container">
+    <HStack padding={4} width="100%" textAlign="center" p={4} color="white">
       {hourlyWeather.map((weather, index) => (
-        <li key={index}>
-          <p>{weather.shift}</p>
-          <img src={weather.icon} alt="Condição do tempo" />
-          <p>{weather.temp !== null ? `${weather.temp}°C` : "Carregando..."}</p>
-        </li>
+        <Box key={index} p={3} borderRadius="md" width="100%" textAlign="center">
+          <Text fontSize="lg" fontWeight="bold">{weather.shift}</Text>
+          <Image src={weather.icon} alt="Condição do tempo" boxSize="50px" mx="auto" />
+          <Text fontSize="md">{weather.temp !== null ? `${weather.temp}°C` : "Carregando..."}</Text>
+        </Box>
       ))}
-    </ul>
+    </HStack>
   );
 };
 
 export default Shifts;
+

@@ -1,5 +1,7 @@
-import { useParams } from "react-router-dom"
+import { Box, Heading, Text, Image } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useWeatherStyles } from "../../utils/weatherTheme";
 interface WeatherData {
   temp: number | null;
   icon: string;
@@ -8,7 +10,7 @@ interface WeatherData {
   minTemp: number | null;
 }
 
-const API_KEY = "0859778bf6364de7854190048250602"
+const API_KEY = "0859778bf6364de7854190048250602";
 
 const CurrentTemperature: React.FC = () => {
   const { name } = useParams();
@@ -34,20 +36,22 @@ const CurrentTemperature: React.FC = () => {
       });
   }, [name]);
 
-return ( 
-    <div className="container">
-        {weather.temp !== null && (
-        <div>
-        <h1>{name}</h1>
-        <h2>{weather.temp}°C</h2>
-        <h3>{weather.text}</h3>
-        <p>↑ {weather.maxTemp}°C</p>
-        <p>↓ {weather.minTemp}°C</p>
-        <img src={weather.icon} />
-        </div>
-        )}
-    </div>
-    )
-}
+  const { backgroundColor, textColor } = useWeatherStyles(weather.temp);
 
-export default CurrentTemperature
+  return (
+    <Box w={1000} p={30} bg={backgroundColor} color={textColor} borderRadius="md" textAlign="center">
+      {weather.temp !== null && (
+        <>
+          <Heading p={30} fontSize='48px'>{name}</Heading>
+          <Heading p={30} fontSize='56px'>{weather.temp}°C</Heading>
+          <Text color='red'>↑ {weather.maxTemp}°C</Text>
+          <Text color='blue'>↓ {weather.minTemp}°C</Text>
+          <Text fontSize='32px'>{weather.text}</Text>
+          <Image src={weather.icon} alt={weather.text} mx='auto' boxSize='auto' />
+        </>
+      )}
+    </Box>
+  );
+};
+
+export default CurrentTemperature;

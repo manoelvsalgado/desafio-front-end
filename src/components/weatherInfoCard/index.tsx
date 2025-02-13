@@ -1,3 +1,4 @@
+import { Box, Text, HStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
     if (!name) return;
 
     fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${name}&lang=pt&days=1`
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${name}&days=1`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -36,22 +37,31 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
       );
   }, [name]);
 
+  console.log(details);
+
+  // Mapeamento das chaves para acessar corretamente os dados
+  const infoKeyMap: Record<string, keyof WeatherDetails> = {
+    "wind speed": "windSpeed",
+    sunrise: "sunrise",
+    sunset: "sunset",
+    humidity: "humidity",
+  };
+
   return (
-    <ul className="weather-info-container">
+    <HStack padding={4} width="100%" textAlign="center" p={4} color="white">
       {weatherInfo.map((info, index) => (
-        <li key={index}>
-          <p>{info}</p>
-          <p>
+        <Box key={index} p={3} width="100%" textAlign="center">
+          <Text fontSize="lg" fontWeight="bold">{info}</Text>
+          <Text fontSize="md">
             {details
-              ? details[
-                  info.toLowerCase().replace(" ", "") as keyof WeatherDetails
-                ] || "Carregando..."
+              ? details[infoKeyMap[info.toLowerCase()] as keyof WeatherDetails] || "Carregando..."
               : "Carregando..."}
-          </p>
-        </li>
+          </Text>
+        </Box>
       ))}
-    </ul>
+    </HStack>
   );
 };
 
 export default WeatherInfo;
+
