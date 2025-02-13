@@ -1,4 +1,3 @@
-import './index.css'
 import globeIcon from '../../assets/icons/whiteGlobe.svg'
 
 interface CityListProps {

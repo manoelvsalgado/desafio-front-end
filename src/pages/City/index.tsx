@@ -1,8 +1,7 @@
-import './index.css'
 import { useNavigate } from 'react-router-dom';
-import WeatherInfo from '../../components/weatherInfo';
-import Shifts from '../../components/shiftCard';
-import CurrentTemperature from '../../components/currentTemperature';
+import WeatherInfo from '../../components/weatherInfoCard';
+import ShiftCard from '../../components/hourlyWeatherCard';
+import CurrentTemperature from '../../components/currentWeatherCard';
 
   const City: React.FC = () => {
     const shifts = ["Dawn", "Morning", "Afternoon", "Night"];
@@ -12,7 +11,7 @@ import CurrentTemperature from '../../components/currentTemperature';
     return (
       <div className="container">
         <CurrentTemperature />
-        <Shifts shifts={shifts} />
+        <ShiftCard shifts={shifts} />
         <WeatherInfo weatherInfo={weatherInfo} />
         <button onClick={() => navigate(-1)}>
           <p>Go back</p>
