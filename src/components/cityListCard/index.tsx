@@ -1,4 +1,4 @@
-import { Box, VStack, Link } from "@chakra-ui/react";
+import { Box, Link, SimpleGrid } from "@chakra-ui/react";
 
 interface CityListProps {
     cities: string[];
@@ -6,7 +6,7 @@ interface CityListProps {
 
 const CityList: React.FC<CityListProps> = ({ cities }) => {
     return (
-        <VStack padding={3} width="100%" textAlign="center" p={3}>
+        <SimpleGrid columns={3} padding={3} width="100%" textAlign="center" p={3}>
             {cities.map((city, index) => (
                 <Box
                     key={index}
@@ -27,7 +27,7 @@ const CityList: React.FC<CityListProps> = ({ cities }) => {
                     </Link>
                 </Box>
             ))}
-        </VStack>
+        </SimpleGrid>
     );
 };
 
