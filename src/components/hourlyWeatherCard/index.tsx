@@ -23,7 +23,7 @@ const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
   if (loading) return <Text>Loading...</Text>;
 
   return (
-    <HStack padding={4} width="100%" textAlign="center" p={4} color="white">
+    <HStack padding={4} width="100%" textAlign="center" p={4}>
       {hourlyWeather.map((weather, index) => (
         <Box key={index} p={3} borderRadius="md" width="100%" textAlign="center">
           <Text fontSize="lg" fontWeight="bold">{weather.shift}</Text>
