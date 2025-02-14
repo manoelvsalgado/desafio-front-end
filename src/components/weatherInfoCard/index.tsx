@@ -15,7 +15,7 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
       }
     : null;
 
-  const infoKeyMap: Record<string, keyof typeof details> = {
+  const infoKeyMap: Record<string, string> = {
     "wind speed": "windSpeed",
     sunrise: "sunrise",
     sunset: "sunset",
@@ -29,7 +29,8 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
       {weatherInfo.map((info, index) => (
         <Box key={index} p={3} width="100%" textAlign="center">
           <Text fontSize="lg" fontWeight="bold">{info}</Text>
-          <Text fontSize="md">{details?.[infoKeyMap[info.toLowerCase()]] ?? "N/A"}</Text>
+          <Text fontSize="md"> {details?.[infoKeyMap[info.toLowerCase()] as keyof typeof details] ?? "N/A"}
+          </Text>
         </Box>
       ))}
     </HStack>
