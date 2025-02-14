@@ -16,8 +16,6 @@ const City: React.FC = () => {
   const temp = weatherData?.current?.temp_c ?? null;
   const { backgroundColor, textColor } = useWeatherStyles(temp);
   
-  console.log(backgroundColor, textColor)
-
   return (
     <Box
       minH="100vh"
