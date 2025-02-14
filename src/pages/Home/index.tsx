@@ -19,7 +19,7 @@ const Home: React.FC = () => {
       <VStack padding={4} textAlign="center">
         <Heading fontSize="48px">Weather</Heading>
         <Text fontSize="32px" p={10} color="gray.400">Select a City</Text>
-        <Image src={globeIcon} alt="Globe logo" boxSize="auto"/>
+        <Image src={globeIcon} alt="Globe logo" height='200px'/>
         <CityList cities={cities} />
       </VStack>
     </Box>
