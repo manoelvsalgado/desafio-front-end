@@ -25,7 +25,7 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
   if (loading) return <Text>Loading...</Text>;
 
   return (
-    <HStack padding={4} width="100%" textAlign="center" p={4} color="white">
+    <HStack padding={4} width="100%" textAlign="center" p={4}>
       {weatherInfo.map((info, index) => (
         <Box key={index} p={3} width="100%" textAlign="center">
           <Text fontSize="lg" fontWeight="bold">{info}</Text>
