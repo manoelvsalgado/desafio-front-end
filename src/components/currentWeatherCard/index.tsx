@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, Image, VStack, HStack } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useWeatherStyles } from "../../utils/weatherTheme";
@@ -43,9 +43,13 @@ const CurrentTemperature: React.FC = () => {
       {weather.temp !== null && (
         <>
           <Heading p={30} fontSize='48px'>{name}</Heading>
-          <Heading p={30} fontSize='56px'>{weather.temp}°C</Heading>
-          <Text color='red'>↑ {weather.maxTemp}°C</Text>
-          <Text color='blue'>↓ {weather.minTemp}°C</Text>
+          <HStack justify='center'>
+            <Heading p={30} fontSize='56px'>{weather.temp}°C</Heading>
+            <VStack>
+              <Text color='red'>↑ {weather.maxTemp}°C</Text>
+              <Text color='blue'>↓ {weather.minTemp}°C</Text>
+            </VStack>
+          </HStack>
           <Text fontSize='32px'>{weather.text}</Text>
           <Image src={weather.icon} alt={weather.text} mx='auto' boxSize='auto' />
         </>
