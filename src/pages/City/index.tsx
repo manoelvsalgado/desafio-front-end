@@ -1,17 +1,22 @@
 import { Box, Button, VStack } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import WeatherInfo from "../../components/weatherInfoCard";
 import ShiftCard from "../../components/hourlyWeatherCard";
 import CurrentTemperature from "../../components/currentWeatherCard";
+import { useWeatherData } from "../../utils/weatherData";
 import { useWeatherStyles } from "../../utils/weatherTheme";
-import { useState } from "react";
+
 
 const City: React.FC = () => {
   const shifts = ["Dawn", "Morning", "Afternoon", "Night"];
   const weatherInfo = ["Wind Speed", "Sunrise", "Sunset", "Humidity"];
   const navigate = useNavigate();
-  const [weather] = useState<{ temp: number | null }>({ temp: null });
-  const { backgroundColor, textColor } = useWeatherStyles(weather.temp);
+  const { name } = useParams();
+  const { weatherData } = useWeatherData(name);
+  const temp = weatherData?.current?.temp_c ?? null;
+  const { backgroundColor, textColor } = useWeatherStyles(temp);
+  
+  console.log(backgroundColor, textColor)
 
   return (
     <Box
@@ -30,8 +35,8 @@ const City: React.FC = () => {
         <WeatherInfo weatherInfo={weatherInfo} />
         
         <Button 
-          size="lg" 
-          mt={4} 
+          background={backgroundColor}
+          color={textColor}
           onClick={() => navigate(-1)}
         >
           Go back
