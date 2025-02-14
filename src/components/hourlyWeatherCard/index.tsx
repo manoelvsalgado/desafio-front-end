@@ -34,7 +34,7 @@ const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
         setHourlyWeather(forecast);
       })
       .catch((error) =>
-        console.error("Erro ao buscar dados meteorológicos:", error)
+        console.error("Failed to get data:", error)
       );
   }, [name, shifts]);
 
@@ -43,8 +43,8 @@ const Shifts: React.FC<{ shifts: string[] }> = ({ shifts }) => {
       {hourlyWeather.map((weather, index) => (
         <Box key={index} p={3} borderRadius="md" width="100%" textAlign="center">
           <Text fontSize="lg" fontWeight="bold">{weather.shift}</Text>
-          <Image src={weather.icon} alt="Condição do tempo" boxSize="50px" mx="auto" />
-          <Text fontSize="md">{weather.temp !== null ? `${weather.temp}°C` : "Carregando..."}</Text>
+          <Image src={weather.icon} alt="Weather condition" boxSize="50px" mx="auto" />
+          <Text fontSize="md">{weather.temp !== null ? `${weather.temp}°C` : "Loading..."}</Text>
         </Box>
       ))}
     </HStack>

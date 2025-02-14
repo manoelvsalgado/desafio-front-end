@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const API_KEY = "0859778bf6364de7854190048250602";
-
 interface WeatherDetails {
   windSpeed: string;
   sunrise: string;
@@ -37,9 +36,6 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
       );
   }, [name]);
 
-  console.log(details);
-
-  // Mapeamento das chaves para acessar corretamente os dados
   const infoKeyMap: Record<string, keyof WeatherDetails> = {
     "wind speed": "windSpeed",
     sunrise: "sunrise",
@@ -54,8 +50,8 @@ const WeatherInfo: React.FC<{ weatherInfo: string[] }> = ({ weatherInfo }) => {
           <Text fontSize="lg" fontWeight="bold">{info}</Text>
           <Text fontSize="md">
             {details
-              ? details[infoKeyMap[info.toLowerCase()] as keyof WeatherDetails] || "Carregando..."
-              : "Carregando..."}
+              ? details[infoKeyMap[info.toLowerCase()] as keyof WeatherDetails] || "Loading..."
+              : "Loading..."}
           </Text>
         </Box>
       ))}
